@@ -180,3 +180,9 @@ p {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
+
+.dog-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

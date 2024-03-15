@@ -23,8 +23,27 @@
     <h2>Task Description:</h2>
     <p><%= tasks[i].tDesc %></p>
     <div class="button-grid">
-      <button name="update" class="update-button" type="button">Update</button>
-      <button name="delete" class="delete-button" type="button">Delete</button>
+      <form class="dog-form" method="POST" action="/update">
+        <button
+          action="/update"
+          name="update"
+          class="update-button"
+          type="submit"
+        >
+          Update
+        </button>
+      </form>
+      <form class="dog-form" method="POST" action="/delete">
+        <input type="hidden" name="productId" value="<%= tasks[i].tId %>" />
+        <button
+          action="/delete"
+          name="delete"
+          class="delete-button"
+          type="submit"
+        >
+          Delete
+        </button>
+      </form>
     </div>
   </div>
   <% } %> <%} else { %>
