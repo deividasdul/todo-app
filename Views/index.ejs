@@ -6,45 +6,59 @@
 <main class="container">
   <form class="task-card" method="POST" action="/add">
     <label for="">Task Name:</label>
-    <input name="tName" placeholder="Name..." type="text" />
+    <input required name="tName" placeholder="Name..." type="text" />
     <label for="">Task Date:</label>
-    <input name="tDate" type="date" />
+    <input required name="tDate" type="date" />
     <label for="">Task Description:</label>
-    <input name="tDesc" placeholder="Description..." type="text" />
+    <input required name="tDesc" placeholder="Description..." type="text" />
     <button class="add-button" type="submit">Add</button>
   </form>
 
-  <% if (locals.tasks) { %> <% for (let i = 0; i < tasks.length; i++) { %>
+  <% var currentYear = new Date(); %> <% var yearToday =
+  currentYear.getFullYear(); %> <% var monthToday = currentYear.getMonth(); %>
+  <% var dayToday = currentYear.getDate(); %> <% %> <% if (locals.tasks) { %> <%
+  for (let i = 0; i < tasks.length; i++) { %>
   <div class="task-card">
-    <h2>Task Name:</h2>
-    <p><%= tasks[i].tName %></p>
-    <h2>Task Date:</h2>
-    <p><%= tasks[i].tDate %></p>
-    <h2>Task Description:</h2>
-    <p><%= tasks[i].tDesc %></p>
-    <div class="button-grid">
-      <form class="dog-form" method="POST" action="/update">
-        <button
-          action="/update"
-          name="update"
-          class="update-button"
-          type="submit"
-        >
-          Update
-        </button>
-      </form>
-      <form class="dog-form" method="POST" action="/delete">
-        <input type="hidden" name="productId" value="<%= tasks[i].tId %>" />
-        <button
-          action="/delete"
-          name="delete"
-          class="delete-button"
-          type="submit"
-        >
-          Delete
-        </button>
-      </form>
-    </div>
+    <form method="POST" action="/update">
+      <input type="hidden" name="productId" value="<%= tasks[i].tId %>" />
+      <h2>Task Name:</h2>
+      <input
+        name="tNameUpdated"
+        type="text"
+        class="answer"
+        placeholder="<%= tasks[i].tName %>"
+        value="<%= tasks[i].tName %>"
+      />
+      <h2>Task Date:</h2>
+      <p><%=yearToday%>-<%=monthToday%>-<%=dayToday%></p>
+      <input
+        name="tDateUpdated"
+        type="text"
+        class="answer"
+        placeholder="<%=tasks[i].tDate%>"
+        value="<%=tasks[i].tDate%>"
+      />
+      <h2>Task Description:</h2>
+      <input
+        name="tDescUpdated"
+        type="text"
+        class="answer"
+        placeholder="<%= tasks[i].tDesc %>"
+        value="<%= tasks[i].tDesc %>"
+      />
+      <button class="update-button" type="submit">Update</button>
+    </form>
+    <form class="dog-form" method="POST" action="/delete">
+      <input type="hidden" name="productId" value="<%= tasks[i].tId %>" />
+      <button
+        action="/delete"
+        name="delete"
+        class="delete-button"
+        type="submit"
+      >
+        Delete
+      </button>
+    </form>
   </div>
   <% } %> <%} else { %>
   <h2>NO TASKS</h2>

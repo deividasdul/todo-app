@@ -14,6 +14,7 @@ APP.listen(PORT, () => {
 
 APP.get("/", (req, res) => {
   res.render("index.ejs", {
+    tasks: allTasks,
     year: new Date().getFullYear(),
   });
 });
@@ -40,17 +41,38 @@ APP.post("/add", (req, res) => {
   });
 });
 
-APP.post("/delete", postDeleteProductPage);
-
-function postDeleteProductPage(req, res) {
+APP.post("/delete", (req, res) => {
   const tId = req.body.productId;
 
-  allTasks = allTasks.filter((task) => task.tId != tId);
-
-  // fs.writeFileSync("index.ejs", JSON.stringify(allTasks));
+  allTasks = allTasks.filter((task) => {
+    return task.tId != tId;
+  });
 
   res.render("index.ejs", {
     tasks: allTasks,
     year: new Date().getFullYear(),
   });
-}
+});
+
+APP.post("/update", (req, res) => {
+  const tId = req.body.productId;
+
+  allTasks.forEach((task) => {
+    if (task.tId == tId) {
+      task.tName = req.body.tNameUpdated;
+      task.tDate = req.body.tDateUpdated;
+      task.tDesc = req.body.tDescUpdated;
+    }
+  });
+
+  res.render("index.ejs", {
+    tasks: allTasks,
+    year: new Date().getFullYear(),
+  });
+});
+
+APP.get("/about", (req, res) => {
+  res.render("about.ejs", {
+    year: new Date().getFullYear(),
+  });
+});

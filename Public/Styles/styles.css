@@ -163,6 +163,8 @@ input {
 .delete-button,
 .update-button {
   border-radius: 20px;
+  display: block;
+  margin: auto;
 }
 
 .button-grid {
@@ -185,4 +187,10 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.answer {
+  background-color: #222831;
+  border: none;
+  color: #eeeeee;
 }
