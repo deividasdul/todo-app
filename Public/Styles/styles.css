@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
   color: #eeeeee;
   font-size: 16px;
 }
@@ -19,7 +18,6 @@ body {
   width: 100%;
   height: 100px;
   background-color: #222831;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +29,6 @@ body {
   text-decoration: none;
   font-size: 26px;
   font-family: "Lora", serif;
-  font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
@@ -46,32 +43,68 @@ body {
   border: solid 1px #393e46;
   width: 150px;
   padding: 10px;
+  transition: all 0.25s;
 }
 
-.nav-button:hover {
+.nav-button:hover,
+.first-button:hover,
+.add-button:hover {
   cursor: pointer;
 }
 
-.first-button {
+.first-button,
+.add-button {
   background-color: #00adb5;
-
   transition: all 0.25s;
 }
 
 .add-button {
-  background-color: #00adb5;
   color: #eeeeee !important;
-  padding: 10px;
-
   font-size: 24px;
+  padding: 10px;
+}
+
+.update-button {
+  color: #222831;
+  background-color: yellow;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  padding: 10px;
   transition: all 0.25s;
+}
+
+.delete-button {
+  color: #eeeeee;
+  background-color: red;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  padding: 10px;
+  border: none;
+  transition: all 0.25s;
+}
+
+.update-button:hover,
+.delete-button:hover {
+  cursor: pointer;
+}
+
+.update-button:hover {
+  background-color: #393e46;
+  color: yellow;
+}
+
+.delete-button:hover {
+  background-color: #eeeeee;
+  color: red;
 }
 
 .first-button:hover,
 .add-button:hover {
   color: #00adb5 !important;
   background-color: #eeeeee;
-  cursor: pointer;
 }
 
 h1 {
@@ -80,9 +113,7 @@ h1 {
   color: #222831;
   margin-top: 50px;
   font-family: "Lora", serif;
-  font-optical-sizing: auto;
   font-weight: 500;
-  font-style: normal;
 }
 
 .container {
@@ -90,6 +121,7 @@ h1 {
   grid-template-columns: repeat(5, 1fr);
   gap: 50px;
   margin-left: 50px;
+  margin-right: 50px;
 }
 
 .task-card {
@@ -113,16 +145,13 @@ h1 {
 
 label {
   font-family: "Lora", serif;
-  font-optical-sizing: auto;
   font-weight: 500;
-  font-style: normal;
 }
 
 input,
 .add-button {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-style: normal;
   color: #222831;
 }
 
@@ -130,6 +159,24 @@ input {
   padding-left: 10px;
 }
 
-.add-button {
+.add-button,
+.delete-button,
+.update-button {
   border-radius: 20px;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+h2 {
+  font-family: "Lora", serif;
+  font-weight: 500;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
 }

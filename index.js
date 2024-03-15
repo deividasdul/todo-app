@@ -17,8 +17,22 @@ APP.get("/", (req, res) => {
   });
 });
 
+var allTasks = [];
+
 APP.post("/add", (req, res) => {
-  var taskName = req.body.tName;
-  var taskDate = req.body.tDate;
-  var taskDescription = req.body.tDesc;
+  var task = {
+    tName: req.body.tName,
+    tDate: req.body.tDate,
+    tDesc: req.body.tDesc,
+  };
+
+  allTasks.push(task);
+
+  console.log(allTasks);
+  console.log(allTasks.length);
+
+  res.render("index.ejs", {
+    tasks: allTasks,
+    year: new Date().getFullYear(),
+  });
 });

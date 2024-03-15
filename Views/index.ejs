@@ -1,7 +1,7 @@
 <%- include("partials/header.ejs"); %> <% if (locals.name) { %>
 <h1>Welcome, <%= name %>!</h1>
 <%} else { %>
-<h1>Welcome, guest!</h1>
+<h1>Welcome, Guest!</h1>
 <%} %>
 <main class="container">
   <form class="task-card" method="POST" action="/add">
@@ -13,5 +13,22 @@
     <input name="tDesc" placeholder="Description..." type="text" />
     <button class="add-button" type="submit">Add</button>
   </form>
+
+  <% if (locals.tasks) { %> <% for (let i = 0; i < tasks.length; i++) { %>
+  <div class="task-card">
+    <h2>Task Name:</h2>
+    <p><%= tasks[i].tName %></p>
+    <h2>Task Date:</h2>
+    <p><%= tasks[i].tDate %></p>
+    <h2>Task Description:</h2>
+    <p><%= tasks[i].tDesc %></p>
+    <div class="button-grid">
+      <button name="update" class="update-button" type="button">Update</button>
+      <button name="delete" class="delete-button" type="button">Delete</button>
+    </div>
+  </div>
+  <% } %> <%} else { %>
+  <h2>NO TASKS</h2>
+  <%}%>
 </main>
 <%- include("partials/footer.ejs"); %>
