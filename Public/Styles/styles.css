@@ -58,9 +58,47 @@ body {
   transition: all 0.25s;
 }
 
-.first-button:hover {
-  color: #00adb5;
+.add-button {
+  background-color: #00adb5;
+  color: #eeeeee !important;
+  padding: 10px;
+
+  font-size: 24px;
+  transition: all 0.25s;
+}
+
+.first-button:hover,
+.add-button:hover {
+  color: #00adb5 !important;
   background-color: #eeeeee;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 64px;
+  text-align: center;
+  color: #222831;
+  margin-top: 50px;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 50px;
+  margin-left: 50px;
+}
+
+.task-card {
+  display: inline-flex;
+  flex-direction: column;
+  background-color: #222831;
+  gap: 10px;
+  border: 5px solid #393e46;
+  padding: 10px;
 }
 
 #footer {
@@ -71,4 +109,27 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+label {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+input,
+.add-button {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #222831;
+}
+
+input {
+  padding-left: 10px;
+}
+
+.add-button {
+  border-radius: 20px;
 }
